@@ -81,10 +81,10 @@ def _(scenario_context: dict):
     pass
 
 
-# Define the 'todo' tag to skip the feature or scenario
+# Define the 'skip' tag to skip the feature or scenario
 
 def pytest_bdd_apply_tag(tag, function):
-    if tag == 'todo':
+    if tag == 'skip':
         marker = pytest.mark.skip(reason="Not implemented yet")
         marker(function)
         return True
