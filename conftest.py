@@ -79,3 +79,14 @@ def _(scenario_context: dict):
     # This demo is a mock data warehouse.
     # In an actual data warehouse, execute ETL from landing zone to core here.
     pass
+
+
+# Define the 'todo' tag to skip the feature or scenario
+
+def pytest_bdd_apply_tag(tag, function):
+    if tag == 'todo':
+        marker = pytest.mark.skip(reason="Not implemented yet")
+        marker(function)
+        return True
+    else:
+        return None
