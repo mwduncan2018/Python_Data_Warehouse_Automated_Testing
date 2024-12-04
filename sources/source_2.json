@@ -1,0 +1,43 @@
+{
+    "Orders": [
+        {
+            "Customer": {
+                "FirstName": "Benjamin",
+                "LastName": "Harrison"
+            },
+            "OrderLocation": "London",
+            "Album": {
+                "BandName": "Lady Gaga",
+                "AlbumName": "The Fame Monster",
+                "Price": 14
+            },
+            "Temperature": 10
+        },
+        {
+            "Customer": {
+                "FirstName": "Boris",
+                "LastName": "Johnson"
+            },
+            "OrderLocation": "London",
+            "Album": {
+                "BandName": "Amon Amarth",
+                "AlbumName": "Jomsviking",
+                "Price": 15
+            },
+            "Temperature": 20
+        },
+        {
+            "Customer": {
+                "FirstName": "Millard",
+                "LastName": "Fillmore"
+           },
+            "OrderLocation": "Birmingham",
+            "Album": {
+                "BandName": "Metallica",
+                "AlbumName": "Ride The Lightning",
+                "Price": 10
+            },
+            "Temperature": 10
+        }
+    ]
+}

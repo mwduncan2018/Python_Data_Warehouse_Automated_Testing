@@ -1,0 +1,65 @@
+CREATE TABLE albums (
+album_id INT GENERATED ALWAYS AS IDENTITY,
+band_name VARCHAR(255) NOT NULL,
+album_name VARCHAR(255) NOT NULL,
+price NUMERIC(10,2) NOT NULL,
+PRIMARY KEY(album_id)
+);
+
+INSERT INTO albums (band_name, album_name, price)
+VALUES
+('Lady Gaga', 'The Fame Monster', '14'),
+('Amon Amarth', 'Jomsviking', '15'),
+('Nirvana', 'In Utero', '13'),
+('Metallica', 'Ride The Lightning', '10'),
+('Alan Jackson', 'Drive', '11'),
+('Lady Gaga', 'The Fame Monster', '14'),
+('Amon Amarth', 'Jomsviking', '15'),
+('Metallica', 'Ride The Lightning', '10');
+
+CREATE TABLE customers (
+customer_id INT GENERATED ALWAYS AS IDENTITY,
+full_name VARCHAR(255),
+first_name VARCHAR(255),
+last_name VARCHAR(255),
+album_id INT,
+PRIMARY KEY(customer_id),
+CONSTRAINT fk_album
+  FOREIGN KEY(album_id)
+  REFERENCES albums(album_id)
+);
+
+INSERT INTO customers(full_name, first_name, last_name, album_id)
+VALUES
+('Benjamin Harrison','','', 1),
+('John Tyler','','', 2),
+('James Polk','','', 3),
+('Millard Fillmore','','', 4),
+('Rutherford Hayes','','', 5),
+('','Benjamin','Harrison', 6),
+('','Boris','Johnson', 7),
+('','Millard','Fillmore', 8);
+
+
+CREATE TABLE orders (
+order_id INT GENERATED ALWAYS AS IDENTITY,
+order_location VARCHAR(255) NOT NULL,
+celcius_temp INTEGER NOT NULL,
+customer_id INT,
+PRIMARY KEY(order_id),
+CONSTRAINT fk_customer
+  FOREIGN KEY(customer_id)
+  REFERENCES customers(customer_id)
+  ON DELETE SET NULL
+);
+
+INSERT INTO orders(order_location, celcius_temp, customer_id)
+VALUES
+('London', 10, 1),
+('', 20, 2),
+('', 30, 3),
+('Birmingham', 10, 4),
+('Birmingham', 20, 5),
+('London', 10, 6),
+('London', 20, 7),
+('Birmingham', 10, 8);

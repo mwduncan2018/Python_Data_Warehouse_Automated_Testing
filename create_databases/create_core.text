@@ -1,0 +1,53 @@
+CREATE TABLE albums (
+album_id INT GENERATED ALWAYS AS IDENTITY,
+band_name VARCHAR(255) NOT NULL,
+album_name VARCHAR(255) NOT NULL,
+price NUMERIC(10,2) NOT NULL,
+PRIMARY KEY(album_id)
+);
+
+INSERT INTO albums (band_name, album_name, price)
+VALUES
+('Metallica', 'Ride The Lightning', 10),
+('Alan Jackson', 'Drive', 11),
+('Nirvana', 'In Utero', 13),
+('Lady Gaga', 'The Fame Monster', 14),
+('Amon Amarth', 'Jomsviking', 15);
+
+
+CREATE TABLE customers (
+customer_id INT GENERATED ALWAYS AS IDENTITY,
+first_name VARCHAR(255),
+last_name VARCHAR(255),
+album_id INT,
+PRIMARY KEY(customer_id),
+CONSTRAINT fk_album
+  FOREIGN KEY(album_id)
+  REFERENCES albums(album_id)
+);
+
+INSERT INTO customers (first_name, last_name, album_id)
+VALUES
+('Benjamin', 'Harrison', 4),
+('John', 'Tyler', 5),
+('James', 'Polk', 3),
+('Millard', 'Fillmore', 1),
+('Rutherford', 'Hayes', 2),
+('Boris', 'Johnson', 5);
+
+CREATE TABLE orders (
+order_id INT GENERATED ALWAYS AS IDENTITY,
+order_location VARCHAR(255) NOT NULL,
+fahrenheit_temp NUMERIC(10,2) NOT NULL,
+customer_id INT,
+PRIMARY KEY(order_id),
+CONSTRAINT customer_id
+  FOREIGN KEY(customer_id)
+  REFERENCES customers(customer_id)
+);
+INSERT INTO orders (order_location, fahrenheit_temp, customer_id) VALUES ('London', 50, 1);
+INSERT INTO orders (order_location, fahrenheit_temp, customer_id) VALUES ('Online', 68, 2);
+INSERT INTO orders (order_location, fahrenheit_temp, customer_id) VALUES ('Online', 86, 3);
+INSERT INTO orders (order_location, fahrenheit_temp, customer_id) VALUES ('Birmingham', 50, 4);
+INSERT INTO orders (order_location, fahrenheit_temp, customer_id) VALUES ('Birmingham', 68, 5);
+INSERT INTO orders (order_location, fahrenheit_temp, customer_id) VALUES ('Birmingham', 68, 6);
