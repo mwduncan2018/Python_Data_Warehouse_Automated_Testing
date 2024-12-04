@@ -17,7 +17,7 @@ Scenario: Album ETL, Albums Arrive, No Duplicates
   Then albums from the landing zone arrive in the core db
   And there are no duplicate albums
 
-@not_implemented
+@skip
 Scenario: Album ETL, Conversion to Fahrenheit
   Given a type 1 source file
   When ETL is executed from sources to landing zone
