@@ -126,6 +126,7 @@ def _(scenario_context: dict):
 
 @then("temperature is displayed as fahrenheit")
 def _(scenario_context: dict):
+    # This step is not implemented for the demo.
     pass
 
 @then("customers from the landing zone arrive in the core db")
